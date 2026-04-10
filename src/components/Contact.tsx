@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Send, Mail, MessageSquare } from "lucide-react";
+import { Send, Mail, MessageSquare, Phone, CheckCircle, AlertCircle } from "lucide-react";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 interface FormData {
     name: string;
+    phone: string;
     email: string;
     message: string;
 }
@@ -13,32 +16,51 @@ const Contact: React.FC = () => {
     const { t } = useTranslation();
     const [formData, setFormData] = useState<FormData>({
         name: "",
+        phone: "",
         email: "",
         message: "",
     });
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus("submitting");
+        setErrorMessage("");
 
-        // Simulate form submission
-        setTimeout(() => {
-            // In a real app, you would send the data to your backend
-            console.log("Form submitted:", formData);
-            setStatus("success");
-            setFormData({ name: "", email: "", message: "" });
+        try {
+            const response = await fetch(`${API_URL}/api/contact`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: formData.name.trim(),
+                    phone: formData.phone.trim(),
+                    email: formData.email.trim(),
+                    message: formData.message.trim(),
+                }),
+            });
 
-            // Reset form status after 3 seconds
-            setTimeout(() => {
-                setStatus("idle");
-            }, 3000);
-        }, 1500);
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                setStatus("success");
+                setFormData({ name: "", phone: "", email: "", message: "" });
+                setTimeout(() => setStatus("idle"), 5000);
+            } else {
+                setStatus("error");
+                setErrorMessage(data.errors?.join(", ") || data.error || t("contact.error"));
+                setTimeout(() => setStatus("idle"), 5000);
+            }
+        } catch {
+            setStatus("error");
+            setErrorMessage(t("contact.error"));
+            setTimeout(() => setStatus("idle"), 5000);
+        }
     };
 
     return (
@@ -57,7 +79,8 @@ const Contact: React.FC = () => {
                         <div>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium mb-2">
+                                    <label htmlFor="name" className="block text-sm font-medium mb-2 flex items-center">
+                                        <Mail size={16} className="mr-2 text-primary" hidden />
                                         {t("contact.name")}
                                     </label>
                                     <input
@@ -67,12 +90,29 @@ const Contact: React.FC = () => {
                                         required
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-light"
+                                        className="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-light transition-all"
                                     />
                                 </div>
 
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                                    <label htmlFor="phone" className="block text-sm font-medium mb-2 flex items-center">
+                                        <Phone size={16} className="mr-2 text-primary" hidden />
+                                        {t("contact.phone")}
+                                    </label>
+                                    <input
+                                        id="phone"
+                                        name="phone"
+                                        type="tel"
+                                        required
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-light transition-all"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="email" className="block text-sm font-medium mb-2 flex items-center">
+                                        <Mail size={16} className="mr-2 text-primary" hidden />
                                         {t("contact.email")}
                                     </label>
                                     <input
@@ -82,7 +122,7 @@ const Contact: React.FC = () => {
                                         required
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-light"
+                                        className="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-light transition-all"
                                     />
                                 </div>
 
