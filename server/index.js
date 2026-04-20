@@ -22,8 +22,8 @@ app.use(cors({
 }));
 
 const contactLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 5,
+  windowMs: 1 * 60 * 1000,
+  max: 100,
   message: {
     success: false,
     error: 'Too many requests. Please try again later.',

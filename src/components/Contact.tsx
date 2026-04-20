@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Send, Mail, MessageSquare, Phone, CheckCircle, AlertCircle } from "lucide-react";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API_URL = import.meta.env.VITE_API_URL || "/api";
 
 interface FormData {
     name: string;
@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
         setErrorMessage("");
 
         try {
-            const response = await fetch(`${API_URL}/api/contact`, {
+            const response = await fetch(`${API_URL}/contact`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
