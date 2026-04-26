@@ -42,7 +42,7 @@ const Header: React.FC = () => {
     ${scrolled ? "bg-darker md:bg-darker/20 md:backdrop-blur-md py-4 shadow-lg" : "bg-darker py-6"}
 `}
         >
-            <div className="container flex items-center justify-between">
+            <header className="container flex items-center justify-between">
                 <a href="#home" className="text-2xl font-bold font-heading">
                     <span className="text-primary">Asman</span>Digital
                 </a>
@@ -90,7 +90,7 @@ const Header: React.FC = () => {
                 <button className="md:hidden text-light" onClick={toggleMenu} aria-label="Toggle menu">
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
-            </div>
+            </header>
 
             {/* планшет */}
             <div className="hidden md:flex lg:hidden fixed top-0 left-0 w-full z-40 bg-darker shadow-md">

@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
-// Импорт стилей Swiper
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
