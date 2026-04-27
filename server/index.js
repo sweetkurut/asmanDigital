@@ -97,27 +97,27 @@ function validateContactForm(body) {
 
   if (!name || typeof name !== 'string' || name.trim().length < 2) {
     errors.push('Name must be at least 2 characters.');
-  }
-  if (name && name.length > 100) {
+  } else if (name.length > 100) {
     errors.push('Name is too long (max 100 characters).');
   }
 
-  if (!phone || typeof phone !== 'string' || phone.trim().length < 5) {
+  const phoneRegex = /^[\d\s+\-()]{5,30}$/;
+  if (!phone || typeof phone !== 'string' || !phoneRegex.test(phone.trim())) {
     errors.push('Please provide a valid phone number.');
-  }
-  if (phone && phone.length > 30) {
+  } else if (phone.length > 30) {
     errors.push('Phone number is too long.');
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email || typeof email !== 'string' || !emailRegex.test(email.trim())) {
     errors.push('Please provide a valid email address.');
+  } else if (email.length > 100) {
+    errors.push('Email is too long (max 100 characters).');
   }
 
   if (!message || typeof message !== 'string' || message.trim().length < 10) {
     errors.push('Message must be at least 10 characters.');
-  }
-  if (message && message.length > 2000) {
+  } else if (message.length > 2000) {
     errors.push('Message is too long (max 2000 characters).');
   }
 
