@@ -129,19 +129,19 @@ export const en = {
   reviews: {
     title: "Client Reviews",
     review1: {
-      text: "Working with this developer was a fantastic experience. They delivered exactly what we needed, on time and within budget. The communication was excellent throughout the project.",
-      author: "Alex Johnson",
-      position: "Marketing Director",
+      text: "Asman Digital rebuilt our online store with a modern design, fast performance and CRM integration. The team delivered before the deadline and maintained clear communication at every stage.",
+      author: "Elena Petrova",
+      position: "Head of E-commerce, Retail Group",
     },
     review2: {
-      text: "Our website looks amazing and performs even better. The developer understood our requirements perfectly and made valuable suggestions that improved the final product.",
-      author: "Sarah Williams",
-      position: "CEO, StartupName",
+      text: "We launched our SaaS platform in six weeks thanks to their focus on UX, code quality and reliable delivery. The result exceeded our expectations and simplified the onboarding process for our users.",
+      author: "Oleg Smirnov",
+      position: "COO, Fintech Startup",
     },
     review3: {
-      text: "Exceptional work! The developer was professional, responsive, and delivered high-quality code. They went above and beyond to ensure our project was successful.",
-      author: "Michael Brown",
-      position: "Product Manager",
+      text: "The internal management system they built improved our operational efficiency and reporting. The developer was responsive, professional and delivered a stable solution that we use every day.",
+      author: "Dinara Alymova",
+      position: "Operations Director",
     },
   },
   contact: {
@@ -313,19 +313,19 @@ export const ru = {
   reviews: {
     title: "Отзывы клиентов",
     review1: {
-      text: "Работа с этим разработчиком была фантастическим опытом. Они доставили именно то, что нам нужно, вовремя и в рамках бюджета. Коммуникация была отличной на протяжении всего проекта.",
-      author: "Алекс Джонсон",
-      position: "Директор по маркетингу",
+      text: "Asman Digital переработали наш интернет-магазин: современный дизайн, высокая скорость и интеграция с CRM. Команда выполнила работу раньше срока и держала связь на каждом этапе.",
+      author: "Елена Петрова",
+      position: "Руководитель e-commerce, Ритейл Групп",
     },
     review2: {
-      text: "Наш сайт выглядит потрясающе и работает еще лучше. Разработчик прекрасно понял наши требования и внес ценные предложения, которые улучшили конечный продукт.",
-      author: "Сара Уильямс",
-      position: "CEO, StartupName",
+      text: "Мы запустили SaaS-платформу за шесть недель благодаря их вниманию к UX, качеству кода и точным срокам. Результат превзошел ожидания и упростил процесс регистрации пользователей.",
+      author: "Олег Смирнов",
+      position: "COO, Fintech Startup",
     },
     review3: {
-      text: "Исключительная работа! Разработчик был профессиональным, отзывчивым и предоставил высококачественный код. Они сделали все возможное, чтобы обеспечить успех нашего проекта.",
-      author: "Михаил Браун",
-      position: "Менеджер продукта",
+      text: "Внутренняя система управления, которую они сделали, улучшила нашу операционную эффективность и отчетность. Разработчик был отзывчивым, профессиональным и выполнил стабильное решение, которое мы используем ежедневно.",
+      author: "Динара Алимова",
+      position: "Директор по операциям",
     },
   },
   contact: {
