@@ -3,8 +3,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+
 import { ReviewCard } from "./ReviewCard";
 
 const Reviews: React.FC = () => {
@@ -48,10 +47,13 @@ const Reviews: React.FC = () => {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="section-title gradient-text">{t("reviews.title")}</h2>
+                    <h2 className="section-title gradient-text mb-4">{t("reviews.title")}</h2>
 
                     <div className="mt-12">
                         <Swiper
+                            centeredSlides={true}
+                            loop={true}
+                            grabCursor={true}
                             onSwiper={(swiper) => {
                                 swiperRef.current = swiper;
                             }}

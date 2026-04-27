@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://asmandigital.kg/sitemap.xml
+Sitemap: https://asmandigital.com/sitemap.xml
